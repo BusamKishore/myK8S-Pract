@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-lb-kubernet
-  labels:
-     app: myjavaapp
+ name: myjavaapp-svc
+ labels:
+    app: myjavaapp
+    
 spec:
   type: LoadBalancer
-  selector:
-    app: myjavaapp
   ports:
-  - nodePort: 31000
+  - port: 8080
+    nodePort: 30001
     protocol: TCP
-    port: 80
-    targetPort: 80
+  selector:
+     app:  myjavaapp
+    

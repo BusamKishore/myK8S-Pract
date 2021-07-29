@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deploy
-  namespace: nginx
+  name: myjavaapp-deploy
+  labels:
+     app: myjavaapp
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-       app: nginx
+       app: myjavaapp
   template:
     metadata:
        labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
+        app: myjavaapp
+  containers:
+      - name: myjavaapp-container
+        image: maha4iac/mahaonlinestore:1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
